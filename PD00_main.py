@@ -8,6 +8,9 @@ import pandas as pd
 
 from pydataset import data
 mtcars = data('mtcars')
+flowers = data('iris')
+flowers
+
 mtcarsDF = mtcars
 
 mtcarsDF
@@ -16,7 +19,7 @@ mtcarsDF
 mtcarsDF.shape
 mtcarsDF.head(3)
 mtcarsDF.tail(4)
-mtcarsDF.describe
+mtcarsDF.describe()
 mtcarsDF.columns
 mtcarsDF.dtypes
 
@@ -36,22 +39,21 @@ mtcars.values
 
 #%%% access DF
 mtcarsDF[0:5]
-mtcarsDF[0:5,0:3]
+mtcarsDF[0:5,1:3] #error
 
 #single value: at
 mtcarsDF.at['Mazda RX4', 'mpg']
-mtcarsDF.at['Mazda RX4', 'mpg']
+mtcarsDF.at['Mazda RX4', 'cyl']
 
 #single values : iat : integer
 mtcarsDF.iat[0,0]
-mtcarsDF.iat[0,0:5]
-
+mtcarsDF.iat[0,0:5] #error
+mtcars.head()
 #set of values : loc : index values
 mtcarsDF.index
-mtcarsDF.loc[['Mazda 4X4']]
-mtcarsDF.loc['Mazda 4X4', ['mpg']]
-mtcarsDF.loc[7:9]
-
+mtcarsDF.loc[['Mazda RX4']]
+mtcarsDF.loc['Mazda RX4', ['mpg']]
+mtcarsDF.loc[7:9] #error
 #iloc
 mtcarsDF
 mtcarsDF.loc['Mazda RX4']
@@ -64,6 +66,7 @@ mtcarsDF.loc['Mazda RX4':'Datsun 710']  #difficult to implement
 
 mtcarsDF.iloc[1:10, 1:5]
 mtcarsDF.iloc[1:10:2, 1:5:2]
+mtcarsDF.iloc[5:10:2,6:8:2]
 mtcarsDF.iloc[1::2, 1::2]
 mtcarsDF.iloc[0]
 mtcarsDF.iloc[1:5]
@@ -98,17 +101,17 @@ mtcarsDF.skew(axis=0)
 mtcarsDF.skew(axis=1)
 
 
-
+mtcarsDF
 #%%filter
 #condition
 mtcarsDF['gear'] == 3  #T&F
-mtcars[mtcarsDF['gear'] == 3]  #rows with T for gear=3
-mtcars[mtcarsDF['gear'] != 3, ['gear','am']]
+mtcars[mtcarsDF['gear'] != 3]  #rows with T for gear=3
+mtcars[mtcarsDF['gear'] != 3]
 
 #another way
 mtcarsDF[mtcarsDF.gear.eq(3)]  #chaining method
 
-mtcarsDF[mtcarsDF['gear'] == 3 & mtcarsDF['am']== 0]
+mtcarsDF[mtcarsDF['gear'] == 3 & mtcarsDF['am']== 0] #error
 
 mtcarsDF.gear.unique()
 mtcarsDF.carb.unique()
@@ -145,6 +148,11 @@ mtcarsDF['wt'][mtcarsDF['gear'] == 4].sum()  #sum of wt of 4 gear cars
 mtcarsDF['gear'].value_counts()
 mtcarsDF[mtcars['hp'] > 150].gear.value_counts()
 mtcarsDF['mpg'].unique()
+mtcarsDF['am'].unique()
+mtcarsDF.am.unique()
+
+mtcarsDF.carb.unique()
+mtcarsDF.head()
 mtcarsDF['mpg'].nunique()# how many non-null unique values
 mtcarsDF['mpg'].count()
 #other stats functions - count, sum, mean, mad, median, min, max, mode, abs, prod, std, var, sem, skew, kurt, quantile, cumsum, cumprod, cummax, cummin, describe
@@ -152,18 +160,19 @@ mtcarsDF.describe()  # default only numeric
 
 #%% sort
 mtcarsDF.sort_values(by='gear', axis=0)
-mtcarsDF.sort_values(by=['gear', 'mpg'])
-
-
-
+mtcarsDF.sort_values(by=['gear', 'mpg'],  ascending=[True, False], axis=0)
+mtcarsDF.sort_values?
 
 
 #%%% groupby
 mtcarsDF.describe()
+mtcarsDF['carnames'] = mtcarsDF.index
+mtcarsDF.head()
 mtcarsDF.groupby('gear')
 mtcarsDF.groupby(['gear'])
 mtcarsDF.groupby(['gear']).groups.keys()
 mtcarsDF.groupby(['gear']).groups[3] #cars of group with gear 3
+mtcarsDF.carb.unique()
 mtcarsDF.groupby('carb').first()  #first item of each group
 mtcarsDF.groupby('carb').last()
 mtcarsDF.groupby('gear')['mpg'].mean()
