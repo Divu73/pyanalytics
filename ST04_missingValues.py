@@ -14,7 +14,11 @@ df
 #na is not missing, it is a text
 df.head()
 df.describe(include='all')
-#
+df.describe()
+df.dtypes
+dir(df)
+df.describe
+df.head()
 #ST_NUM: Street number
 #ST_NAME: Street name
 #OWN_OCCUPIED: Is the residence owner occupied
@@ -44,6 +48,7 @@ np.mean(df.NUM_BEDROOMS)
 #we can specify at the time of import as which type of values to mark missing
 # Making a list of missing value types
 missing_values = ["n/a", "na", "--"]
+type(missing_values)
 df2 = pd.read_csv(url, na_values = missing_values)
 df2
 df

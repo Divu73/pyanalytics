@@ -5,7 +5,7 @@
 #S1- libraries
 import numpy as np
 from sklearn.linear_model import LinearRegression
-
+#sklearn.linear_model is a lib.
 
 #S2 - data
 x = np.array([5,15,25,35,45,55]).reshape((-1,1))  #making 2 dim
@@ -27,7 +27,7 @@ model.intercept_  #bo
 model.coef_  #b1
 y = 5.6 + .54 * x  #mathematical equation
 #if x is increased by 1 units, y increased by .54 units; when x=0, y=5.6 (constant value)
-
+5.6 + .54 * 5
 
 #S5 Predict
 y_pred = model.predict(x)  #predict on trained data 
@@ -106,8 +106,8 @@ results.predict(x)
 
 #%%AIC & BIC  
 #https://pypi.org/project/RegscorePy
-#pip install RegscorePy
+pip install RegscorePy
 import RegscorePy
-#aic(y, y_pred, p)
+aic(y, y_pred, p)
 RegscorePy.aic.aic(y=y, y_pred= results.predict(x), p=1)
 RegscorePy.bic.bic(y=y, y_pred= results.predict(x), p=1)
