@@ -43,7 +43,7 @@ iris.target_names
 dot_data = tree.export_graphviz(clf, out_file=None,  feature_names=iris.feature_names,  class_names=iris.target_names, filled=True, rounded=True,  special_characters=True)  
 
 import os
-os.environ["PATH"] += os.pathsep + 'c:/Program Files (x86)/Graphviz2.38/bin/'
+os.environ["PATH"] += os.pathsep + 'c:/Program Files (x86)/Graphviz/bin/'
 
 import graphviz 
 from subprocess import call
