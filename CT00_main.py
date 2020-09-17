@@ -16,7 +16,7 @@ url='https://raw.githubusercontent.com/DUanalytics/pyAnalytics/master/data/clust
 data = pd.read_csv(url)
 data.shape
 data.head()
-data.describe()
+data.describe() #only shows numerical columns, use include all for all columns
 data.columns
 
 #visualise
@@ -32,7 +32,7 @@ plt.show();
 data.dtypes
 data.isnull().any()
 data.isnull().any(axis=1)
-data.index[data.isnull().any(axis=1)]
+data.index[data.isnull().any(axis=1)]#list out rows with atleast one missing value
 data.iloc[6]  #see the null values
 data.isnull().sum().sum()  #75 missing values 
 data.isnull().sum(axis=0)  #columns missing
@@ -49,19 +49,19 @@ scalar = StandardScaler()
 data2_scaled = scalar.fit_transform(data2)
 
 data2_scaled.describe() #it converts to different format
-pd.DataFrame(data2_scaled).describe()
-
+pd.DataFrame(data2_scaled).describe()#default scaling from -3 t0 +3
+type(data2_scaled)
 #kmeans
 from sklearn.cluster import KMeans
 kmeans = KMeans(n_clusters=2)  #hyper parameters
 
 kmeans.fit(data2_scaled)
 kmeans.inertia_  #sum of sq distances of samples to their centeroid
-kmeans.cluster_centers_
+kmeans.cluster_centers_#centroid values
 kmeans.labels_
 kmeans.n_iter_  #iterations to stabilise the clusters
 kmeans.predict(data2_scaled)
-
+pd.DataFrame(data2_scaled).head()
 data2_scaled[1:5]
 
 data.columns
@@ -72,9 +72,9 @@ NCOLS
 clusterNos = kmeans.labels_
 clusterNos
 type(clusterNos)
-
+data2
 data2.groupby([clusterNos]).mean()
-pd.options.display.max_columns =None
+pd.options.display.max_columns =None#can't understand
 data2.groupby([clusterNos]).mean()
 plt.scatter(data2.ApplicantIncome, data2.LoanAmount, c=clusterNos)
 plt.scatter(data2.ApplicantIncome, data2.Credit_History, c=clusterNos) #better distinction

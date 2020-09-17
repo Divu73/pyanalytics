@@ -5,19 +5,19 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from pydataset import data
-import seaborn as sns
+import seaborn as sns #adds to the features of matplot
 df = data('mtcars')
 df.head()
 #from sklearn.tree import DecisionTreeClassifier, export_graphviz
 from sklearn.model_selection import train_test_split
-from sklearn import metrics, tree
+from sklearn import metrics, tree#for machine learning
 df['am'].value_counts()
 df.columns
 
 #classification
 #predict if transmission of car is 0 or 1 on basis of mpg, hp, wt
 X1 = df[['mpg','hp','wt']]
-Y1 = df[['am']]
+Y1 = df['am']
 Y1.value_counts()
 
 #for splitting into train and test 
@@ -69,7 +69,6 @@ df1
 newData1 = X1.sample(4)
 newData1
 clsModel.predict(newData1)
-
 #%% Regression Tree
 #regression
 #predict if mpg (numerical value) on basis of am, hp, wt
@@ -121,6 +120,7 @@ df2['ypred2'] = ypred2
 df2
 df2['mpg'].values
 #Root Mean Squared Error (RMSE)
+from sklearn import metrics
 np.sqrt(metrics.mean_squared_error(y_true=Y2_test, y_pred=ypred2))
 np.sqrt(metrics.mean_squared_error(y_true=df2['mpg'].values, y_pred=df2['ypred2'].values))
 #predict for unknown data
