@@ -8,14 +8,14 @@
 #register in quandl and create your own keys
 #https://www.quandl.com/data/TC1/SBIN-State-Bank-of-India-Adjusted-Pricing
 import quandl
-#pip install quandl
+pip install quandl #install once in laptop or when the package gets updated
 import quandl
 import pandas as pd
 import datetime
-
+import matplotlib.pyplot as plt
 start1 = datetime.datetime(2017, 1, 1)
 end1 = datetime.datetime(2020, 9, 18)
-key = '4D8hkYAV4WEkcTmD9LMW'
+key = '4D8hkYAV4WEkcTmD9LMW' #from quandl website
 S_sbi = "BSE/BOM500112" # SBI
 #Fetch Data
 sbi= quandl.get(dataset=S_sbi, authtoken=key, start_date=start1, end_date=end1)

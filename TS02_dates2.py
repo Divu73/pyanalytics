@@ -29,11 +29,11 @@ date = pd.to_datetime('18th of September, 2020')
 date
 date.strftime('%A')
 date + pd.to_timedelta(np.arange(12), 'D')
-
+date + pd.to_timedelta(np.arange(12), 'O')
 index = pd.DatetimeIndex(['2020-09-11','2020-09-12', '2020-09-13', '2020-09-14'])
 data = pd.Series([10,11,22,35], index=index)
 data
-data['2020']
+data['2020-09-11']
 
 #pandas Time Series Data Structures
 dates = pd.to_datetime([datetime(2017,12,23),'24rd of Dec 2017', '2017-December-27','26-12-2017', '20171231'])

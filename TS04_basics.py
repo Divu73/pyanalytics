@@ -18,7 +18,7 @@ ma3c
 #%%%
 sales.shift(1)
 sales - sales.shift(1)
-
+pip install pmdarima
 from pmdarima.utils import c, diff
 diff(sales, lag=1, differences=1)
 sales - sales.shift(1)

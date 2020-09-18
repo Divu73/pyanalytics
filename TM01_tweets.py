@@ -1,6 +1,7 @@
 #Twitter : Tweets Download & Sentiment Analysis
 #-----------------------------
 #Download tweets from twitter
+pip install tweepy
 import tweepy  #install pip install tweepy
 import csv
 import pandas as pd
@@ -37,7 +38,7 @@ for tweet in tweepy.Cursor(api.search, q=handle, count=100, lang= "en", since = 
     csvWriter.writerow([tweet.created_at, tweet.text.encode( 'utf-8') ])
 
 #https://twitter.com/IIMC_India
-handle='@IIMC_India'
+handle='@IIM_Trichy'
 for tweet in tweepy.Cursor(api.search, q=handle, count=100, lang= "en", since = "2020-01-01").items():
     print(tweet.created_at, tweet.text)
     csvWriter.writerow([tweet.created_at, tweet.text.encode( 'utf-8') ])
@@ -60,7 +61,7 @@ for tweet in tweepy.Cursor(api.search, q="#corona", count=100, lang="en", since 
 
 
 #search with string
-search_words = "gamification"
+search_words = "IPL2020"
 date_since = "2019-01-30"
 
 tweets = tweepy.Cursor(api.search, q=search_words, lang="en", since=date_since).items(5)
