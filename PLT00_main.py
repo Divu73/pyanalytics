@@ -14,12 +14,12 @@ df.columns
 df.dtypes
 
 #scatter
-plt.scatter(x=df.wt, y=df.mpg, color='red', marker='o', size=df.am)
+plt.scatter(x=df.wt, y=df.mpg, color='blue', marker='o')
 plt.show();
 
 #plot2
 df['wt']; df['mpg']
-size1 = df['hp'].to_numpy() 
+size1 = df['disp'].to_numpy() 
 plt.scatter(x='wt', y='mpg', data=df, s=size1)
 plt.xlabel('Weight')
 plt.ylabel('Mileage')
@@ -33,7 +33,7 @@ plt.show();
 plt.hist(x=df.mpg, bins=5)
 plt.show();
 
-plt.hist(x=df.mpg, bins=[0,15,20,24,27,35,50])
+plt.hist(x=df.mpg, bins=[0,25,30,35,40,45,50])
 plt.show();
 
 plt.hist(x=df.mpg, bins=[0,15,20,22,25,30,35,40,50])
@@ -42,7 +42,7 @@ plt.show();
 #barplot
 gearSum = df.groupby('gear').size()
 gearSum
-plt.bar(x=['G3','G4','G5'], height = gearSum)
+plt.bar(x=['Gear3','Gear4','Gear5'], height = gearSum)
 plt.show();
 
 plt.barh(y=['G3','G4','G5'], width = gearSum)
@@ -50,6 +50,9 @@ plt.show();
 
 
 #pie
+Carbsum = df.groupby('carb').size()
+Carbsum
+plt.pie(x=Carbsum, labels=['C1','C2','C3','C4','C6','C8'])
 plt.pie(x=gearSum, labels=['G3','G4','G5'])
 
 #pair
@@ -122,6 +125,6 @@ sns.boxplot(y='mpg', data=df)
 sns.boxplot(x='am', y='mpg', data=df)
 sns.swarmplot(x='carb', y='mpg', data=df)
 sns.violinplot(x='gear', y='mpg', data=df)
-
-
+sns.boxplot(x='gear', y='mpg', data=df)
+sns.swarmplot(x='gear', y='mpg', data=df)
 #end.. practise with other datasets
