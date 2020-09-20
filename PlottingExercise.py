@@ -27,6 +27,11 @@ carbsum = Cars.groupby('carb').size()
 plt.bar(x=['1','2','3','4','6','8'], height=carbsum, width=0.4,color='Pink')
 plt.show();
 
+Cars.gear.unique()
+Cars.gear.count()
+Gearsum= Cars.groupby('gear').size()
+plt.barh(y=['3','4','5'], width=Gearsum,height=0.3,color='Pink')
+plt.show();
 
-plt.barh(y=Cars.gear, width=0.5,color='Yellow')
+plt.pie(x=Gearsum, labels=['Gear 3','Gear 4','Gear 5'])
 plt.show();
