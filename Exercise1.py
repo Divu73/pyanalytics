@@ -15,5 +15,5 @@ flw1=flw['Species']
 flw1
 flw.index
 flw.columns
-flw2=flw.drop('Species')
+flw.na
 flw.drop?
