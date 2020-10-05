@@ -9,11 +9,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from pydataset import data
-flw=data('iris')
+flw=data('titanic')
 flw.head()
 flw1=flw['Species']
 flw1
 flw.index
 flw.columns
-flw.na
+flw.dropna
 flw.drop?
